@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sedg</title>
+</head>
+<body>
+	<form method="post">
+		<input type="text" placeholder="id" name="id">
+		<input type="text" name="name" placeholder="name">
+		<input type="submit" name="submit">
+	</form>
+</body>
+</html>
+<?php
+	$id = $_POST['id'];
+	$name = $_POST['name'];
+	if(!empty($id)||!empty($name)) {
+		$host = 'localhost';
+		$user = 'root';
+		$pass = '';
+		$db_name = 'snehaja';
+		$con = mysqli_connect($host,$user,$pass,$db_name);
+		if(mysqli_connect_error())  {
+			die('Connect Error ('.mysqli_connect_errno().')'.mysqli_connect_error() );
+
+		}
+		else {
+			$ins = "INSERT INTO sneha(id,name) values('$id','$name')";
+			echo "inserted";
+		}
+	}
+	else {
+		echo "All Fileds are req";
+		die();
+	}
+	?>
